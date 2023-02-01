@@ -1,12 +1,14 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MineiracaoService } from '../shared/service/mineiracao.service';
+import { WebSocketService } from '../shared/service/web-socket.service';
+import { Message } from '@stomp/stompjs';
 
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.css']
 })
-export class IndexComponent {
+export class IndexComponent implements OnInit{
 
   @ViewChild('staticTabs', { static: false }) staticTabs?: any;
   selectTab(tabId: number) {
@@ -16,10 +18,23 @@ export class IndexComponent {
   }
 
   constructor(
-    private mineiracaoService: MineiracaoService
+    private mineiracaoService: MineiracaoService,
+    private webSocketService: WebSocketService
   ){
 
   }
+  ngOnInit(): void {
+    // this.webSocketService.watch('/topic/dificuldade').subscribe((message: Message) => {
+    //  console.log(message.body);
+    //  console.log("veio")
+    // });
+  }
+
+  onSendMessage() {
+    const message = `Message generated at ${new Date()}`;
+    this.webSocketService.publish({ destination: '/topic/dificuldade', body: message });
+  }
+  
 
 
   iniciarMineiracao(){

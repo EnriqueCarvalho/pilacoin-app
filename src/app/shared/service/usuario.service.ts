@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Usuario } from '../model/usuario';
 import { Observable } from 'rxjs';
 import { identifierName } from '@angular/compiler';
+import { webSocket } from "rxjs/webSocket";
 
 
 @Injectable({
