@@ -1,0 +1,41 @@
+<div class="container-login">
+    <div class="left">
+      <div>
+        <h1>
+          Pilance - Corretora de pilas
+        </h1>
+      </div>
+      <div>
+        <img src="/assets/img/img.jpg" class="mt-5">
+      </div>
+    </div>
+  
+    <div class="right">
+      <form [formGroup]="form" (ngSubmit)="fazerLogin()">
+        <div class="container-fluid ">
+          <h1 class="text-center mb-5">Login</h1>
+          <div class="row justify-content-center align-items-center h-100">
+            <div>
+              <div class="form-group mb-2 ">
+                <label for="exampleInputEmail1">LOGIN</label>
+                <input formControlName="login" _ngcontent-c0="" class="form-control form-control-lg" placeholder="Digite seu login"
+                  type="text">
+              </div>
+              <div class="form-group mb-3">
+                <label for="exampleInputEmail1">SENHA</label>
+                <input formControlName="senha" class="form-control form-control-lg" placeholder="Digite sua senha" type="password">
+  
+              </div>
+
+  
+              <div class="form-group ">
+                <button class="btn btn-success btn-lg col-12" type="submit">Login</button>
+  
+              </div>
+  
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

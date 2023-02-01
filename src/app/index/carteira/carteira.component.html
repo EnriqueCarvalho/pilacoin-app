@@ -1,0 +1,70 @@
+
+<table>
+<ng-template  ngFor [ngForOf]="pilas" let-pila let-i="index">   
+        
+            <tr>
+                <td>id: {{ pila.id  }}</td>
+                <td>nonce: {{ pila.nonce  }}</td>
+                <td> <button class="btn btn-success btn-sm" (click)="openModal(template, pila )">Transferir</button>  </td>
+            </tr>                       
+             
+              
+              <!-- <button class="btn btn-sm btn-success text-right mt-2" (click)="btnTransferir(usuario)" id="btn-transferencia-{{usuario.id}}">Transferir pila -></button>  
+
+              <form [formGroup]="form" (ngSubmit)="transferirPila()" id="form-transferencia-{{usuario.id}}" style="display: none;">
+                <div class="container-fluid ">        
+                  <div class="row justify-content-center align-items-center">
+                    <div>
+                      <div class="form-group mb-2 ">
+                        <label for="valor">Valor</label>
+                        <input formControlName="valor" _ngcontent-c0="" class="form-control form-control-sm col-3" type="number">
+                        <input formControlName="chavePublica" _ngcontent-c0="" class="form-control form-control-sm col-3" type="text" value="{{usuario.chavePublica}}" style="display: none;">
+                        <input formControlName="nomeUsuario" _ngcontent-c0="" class="form-control form-control-sm col-3" type="text" value="{{usuario.nome}}" style="display: none;">
+                   
+                      </div>          
+                      <div class="form-group ">
+                        <button class="btn btn-success btn-lg col-3" type="submit">Enviar</button>          
+                      </div>          
+                    </div>
+                  </div>
+                </div>
+              </form>    -->
+   
+    
+     
+  </ng-template >
+</table>
+
+
+<ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left" id="my-modal-title">Transferir Pila</h4>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="formularioModal" (ngSubmit)="transferirPila()">
+
+        <div class="form-row"> 
+      
+          <div class="col-md-12">
+            <label for="cd-motivo">Nonce: <span style="color: red;">*</span></label>
+            <textarea readonly style=" resize: none; height: 100px;" class="form-control" id="cd-motivo"  value="{{this.nonce}}" ></textarea>
+
+            <label for="chaveUsuarioDestino">Usuário de Destino</label>
+            <select  class="form-control" id="chaveUsuarioDestino"  formControlName="chaveUsuarioDestino" >
+              <option *ngFor="let usuario of usuarios" [value]="usuario.chavePublica">{{ usuario.nome }}</option>
+            </select>  
+          </div> 
+          <button  type="submit"  class="btn btn-danger  mt-5 col-12">Enviar Pila</button>
+     
+         
+        </div>
+
+        
+           
+      </form>
+    </div>
+  </ng-template>
+
