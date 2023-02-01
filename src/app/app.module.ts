@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { CarteiraComponent } from './index/carteira/carteira.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { rxStompServiceFactory } from './shared/config/rxStompServiceFactory';
+import { WebSocketService } from './shared/service/web-socket.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,12 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ModalModule.forRoot()
 
   ],
-  providers: [],
+  providers: [{
+    provide: WebSocketService,
+    useFactory: rxStompServiceFactory,
+  }
+  
+  ],
   bootstrap: [AppComponent],
   exports: [
     CommonModule,
